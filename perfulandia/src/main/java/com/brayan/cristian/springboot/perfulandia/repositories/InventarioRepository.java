@@ -1,5 +1,8 @@
 package com.brayan.cristian.springboot.perfulandia.repositories;
 
-public interface InventarioRepository {
+import org.springframework.data.repository.CrudRepository;
+import com.brayan.cristian.springboot.perfulandia.entities.Inventario;
+
+public interface InventarioRepository extends CrudRepository<Inventario, Long> {
 
 }
