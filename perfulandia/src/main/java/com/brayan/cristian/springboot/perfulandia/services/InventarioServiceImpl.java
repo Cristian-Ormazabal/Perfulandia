@@ -14,21 +14,21 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class InventarioServiceImpl implements InventarioService {
     @Autowired
-    private InventarioRepository repository;
+    private InventarioRepository iRepository;
 
     @Override
     @Transactional(readOnly = true)
     public List<Inventario> findByAll() {
 
-        return (List<Inventario>) repository.findAll();
+        return (List<Inventario>) iRepository.findAll();
     }
 
     @Override
     @Transactional
     public Optional<Inventario> delete(Inventario unInventario) {
-        Optional<Inventario> inventarioOpcional = repository.findById(unInventario.getId());
+        Optional<Inventario> inventarioOpcional = iRepository.findById(unInventario.getId());
         inventarioOpcional.ifPresent(inventarioDb->{
-            repository.delete(unInventario);
+            iRepository.delete(unInventario);
         });
         return inventarioOpcional;
     }
@@ -36,12 +36,12 @@ public class InventarioServiceImpl implements InventarioService {
     @Override
     @Transactional(readOnly = true)
     public Optional<Inventario> findById(Long id) {
-        return repository.findById(id);
+        return iRepository.findById(id);
     }
 
     @Override
     @Transactional
     public Inventario save(Inventario unInventario) {
-        return repository.save(unInventario);
+        return iRepository.save(unInventario);
     }
 }

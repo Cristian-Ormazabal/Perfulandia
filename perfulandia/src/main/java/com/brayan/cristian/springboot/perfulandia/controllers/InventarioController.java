@@ -8,11 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import com.brayan.cristian.springboot.perfulandia.entities.Inventario;
-import com.brayan.cristian.springboot.perfulandia.repositories.InventarioRepository;
 import com.brayan.cristian.springboot.perfulandia.services.InventarioService;
 
 
@@ -26,23 +24,23 @@ import org.springframework.web.bind.annotation.PutMapping;
 @RequestMapping("api/inventario")
 public class InventarioController {
     @Autowired
-    private InventarioService service;
+    private InventarioService iService;
 
     @GetMapping
     public List<Inventario> List(){
-        return service.findByAll();
+        return iService.findByAll();
        
     }
     
     @PostMapping
     public ResponseEntity<Inventario>crear(@RequestBody Inventario unInventario){
-        return ResponseEntity.status(HttpStatus.CREATED).body(service.save(unInventario));
+        return ResponseEntity.status(HttpStatus.CREATED).body(iService.save(unInventario));
 
     }
     
     @GetMapping("/{id}")
     public ResponseEntity<?> verDetalle(@PathVariable Long id){
-        Optional<Inventario> inventarioOpcional = service.findById(id);
+        Optional<Inventario> inventarioOpcional = iService.findById(id);
         if (inventarioOpcional.isPresent()){
             return ResponseEntity.ok(inventarioOpcional.orElseThrow());
         }
@@ -52,13 +50,13 @@ public class InventarioController {
 
     @PutMapping("/{id}")
     public ResponseEntity<?> modificar(@PathVariable Long id, @RequestBody Inventario unInventario){
-        Optional<Inventario> inventarioOptional = service.findById(id);
+        Optional<Inventario> inventarioOptional = iService.findById(id);
         if (inventarioOptional.isPresent()){
             Inventario inventarioExistente = inventarioOptional.get();
             inventarioExistente.setNombre(unInventario.getNombre());
             inventarioExistente.setDescripcion(unInventario.getDescripcion());
             inventarioExistente.setPrecio(unInventario.getPrecio());
-            Inventario productomodificado = service.save(inventarioExistente);
+            Inventario productomodificado = iService.save(inventarioExistente);
             return ResponseEntity.ok(productomodificado);
         }
         return ResponseEntity.notFound().build();
@@ -68,7 +66,7 @@ public class InventarioController {
     public ResponseEntity<?> eliminar(@PathVariable Long id){
         Inventario unInventario = new Inventario();
         unInventario.setId(id);
-        Optional<Inventario> invenOptional = service.delete(unInventario);
+        Optional<Inventario> invenOptional = iService.delete(unInventario);
         if (invenOptional.isPresent()) {
             return ResponseEntity.ok(invenOptional.orElseThrow());
         }
