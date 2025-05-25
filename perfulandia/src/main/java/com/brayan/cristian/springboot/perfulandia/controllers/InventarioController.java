@@ -73,5 +73,5 @@ public class InventarioController {
         return ResponseEntity.notFound().build();
     }
     
-    // borrar, efecto de esta linea para hacer un pull
+    // borrar, efecto de esta linea para hacer un pull x2 
 }
