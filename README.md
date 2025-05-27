@@ -18,3 +18,8 @@
    - Post: http://localhost:8080/api/envios
    - Put: http://localhost:8080/api/envios (id existente) ej: http://localhost:8080/api/envios/1
    - Delete: http://localhost:8080/api/envios (id existente) ej: http://localhost:8080/api/envios/1
+
+  - Vistas:
+    - Usuarios: http://localhost:8080/usuarios
+    - Inventario: http://localhost:8080/inventario
+    - Envio: http://localhost:8080/envios
