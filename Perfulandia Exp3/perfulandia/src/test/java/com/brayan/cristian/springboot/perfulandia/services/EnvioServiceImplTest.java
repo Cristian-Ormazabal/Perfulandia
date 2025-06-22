@@ -39,7 +39,6 @@ public class EnvioServiceImplTest {
         List<Envio> respuesta = envioService.findByAll();
         assertEquals(3, respuesta.size());
         verify(envioRepository, times(1)).findAll();
-
     }
 
     public void cargarEnvio() {
