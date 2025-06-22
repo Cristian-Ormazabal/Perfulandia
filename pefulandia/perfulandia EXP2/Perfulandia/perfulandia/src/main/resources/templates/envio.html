@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Envíos</title>
+    <meta charset="UTF-8">
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .menu a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: bold;
+           }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <a href="/usuarios">Usuarios</a>
+        <a href="/inventario">Inventario</a>
+        <a href="/envios">Envíos</a>
+    </div>
+    <h2>Envíos registrados</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Dirección</th>
+                <th>Fecha de Envío</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="envio : ${envio}">
+                <td th:text="${envio.id}">1</td>
+                <td th:text="${envio.nombre}">Nombre</td>
+                <td th:text="${envio.direccion}">Dirección</td>
+                <td th:text="${#dates.format(envio.fechaEnvio, 'yyyy-MM-dd')}">2025-05-26</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

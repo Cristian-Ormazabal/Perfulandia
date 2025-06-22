@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Inventario</title>
+    <meta charset="UTF-8">
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .menu a {
+            margin-right: 15px;
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: bold;
+           }
+    </style>
+</head>
+<body>
+    <div class="menu">
+        <a href="/usuarios">Usuarios</a>
+        <a href="/inventario">Inventario</a>
+        <a href="/envios">Envíos</a>
+    </div>
+    <h2>Lista de productos en inventario</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="item : ${inventario}">
+                <td th:text="${item.id}">1</td>
+                <td th:text="${item.nombre}">Producto</td>
+                <td th:text="${item.descripcion}">Descripción</td>
+                <td th:text="${item.precio}">$0</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
