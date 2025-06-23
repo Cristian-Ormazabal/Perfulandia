@@ -32,15 +32,16 @@ public class UsuariosServiceImplTest {
         this.cargarUsuarios();
     }
 
+    // Lista de usuarios para pruebas
     List<Usuarios> uLista = new ArrayList<Usuarios>();
 
     // Prueba unitaria FindByAll
     @Test
     public void findByAllTest() {
-        Mockito.when(usuariosRepository.findAll()).thenReturn(uLista);
-        List<Usuarios> respuesta = usuariosService.findByAll();
-        assertEquals(3, respuesta.size());
-        verify(usuariosRepository, times(1)).findAll();
+        Mockito.when(usuariosRepository.findAll()).thenReturn(uLista); 
+        List<Usuarios> respuesta = usuariosService.findByAll(); 
+        assertEquals(3, respuesta.size()); 
+        verify(usuariosRepository, times(1)).findAll(); 
     }
 
     // Prueba unitaria Save

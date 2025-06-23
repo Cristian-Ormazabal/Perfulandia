@@ -32,6 +32,7 @@ public class EnvioServiceImplTest {
         this.cargarEnvio();
     }
 
+    // Lista de envíos para pruebas
     List<Envio> eLista = new ArrayList<Envio>();
 
     // Prueba unitaria FindByAll
