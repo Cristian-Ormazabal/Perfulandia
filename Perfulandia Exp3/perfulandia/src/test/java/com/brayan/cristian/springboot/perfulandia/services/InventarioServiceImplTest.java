@@ -33,6 +33,7 @@ public class InventarioServiceImplTest {
         this.cargarInventario();
     }
 
+    // Lista de inventarios para pruebas
     List<Inventario> iLista = new ArrayList<Inventario>();
 
     // Prueba unitaria FindByAll
