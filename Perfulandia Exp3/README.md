@@ -23,3 +23,8 @@
     - Usuarios: http://localhost:8080/usuarios
     - Inventario: http://localhost:8080/inventario
     - Envio: http://localhost:8080/envios
+
+  - Documentación
+    - http://localhost:8080/swagger-ui/index.html#/
+
+    
